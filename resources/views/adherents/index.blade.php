@@ -15,7 +15,7 @@
             </p>
         </div>
         <a href="{{ route('adherents.create') }}"
-           class="inline-flex items-center gap-2 rounded-md bg-brand px-4 py-2 text-sm font-medium text-white hover:bg-brand-dark">
+            class="inline-flex items-center gap-2 rounded-md bg-brand px-4 py-2 text-sm font-medium text-white hover:bg-brand-dark">
             <i class="fa-solid fa-user-plus"></i> Ajouter un adhérent
         </a>
     </div>
@@ -45,7 +45,8 @@
                         <td class="px-4 py-3">{{ $adherent->date_inscription->format('d/m/Y') }}</td>
                         <td class="px-4 py-3">
                             @php $enCours = $adherent->emprunts_en_cours_count ?? 0; @endphp
-                            <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium
+                            <span
+                                class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium
                                          {{ $enCours >= 3 ? 'bg-late-light text-late' : ($enCours > 0 ? 'bg-brand-light text-brand-dark' : 'bg-paper text-ink-soft') }}">
                                 {{ $enCours }} / 3
                             </span>
@@ -53,18 +54,19 @@
                         <td class="px-4 py-3">
                             <div class="flex justify-end gap-1">
                                 <a href="{{ route('adherents.show', $adherent) }}" title="Voir la fiche"
-                                   class="rounded p-2 text-ink-soft hover:bg-brand-light hover:text-brand-dark">
+                                    class="rounded p-2 text-ink-soft hover:bg-brand-light hover:text-brand-dark">
                                     <i class="fa-solid fa-id-card"></i><span class="sr-only">Voir la fiche</span>
                                 </a>
                                 <a href="{{ route('adherents.edit', $adherent) }}" title="Modifier"
-                                   class="rounded p-2 text-ink-soft hover:bg-brand-light hover:text-brand-dark">
+                                    class="rounded p-2 text-ink-soft hover:bg-brand-light hover:text-brand-dark">
                                     <i class="fa-solid fa-pen-to-square"></i><span class="sr-only">Modifier</span>
                                 </a>
                                 <form method="POST" action="{{ route('adherents.destroy', $adherent) }}"
-                                      onsubmit="return confirm('Supprimer l\'adhérent {{ addslashes($adherent->prenom . ' ' . $adherent->nom) }} ?');">
+                                    onsubmit="return confirm('Supprimer l\'adhérent {{ addslashes($adherent->prenom . ' ' . $adherent->nom) }} ?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" title="Supprimer" class="rounded p-2 text-ink-soft hover:bg-late-light hover:text-late">
+                                    <button type="submit" title="Supprimer"
+                                        class="rounded p-2 text-ink-soft hover:bg-late-light hover:text-late">
                                         <i class="fa-solid fa-trash"></i><span class="sr-only">Supprimer</span>
                                     </button>
                                 </form>
@@ -76,7 +78,8 @@
                         <td colspan="6" class="px-4 py-12 text-center text-ink-soft">
                             <i class="fa-solid fa-users text-3xl text-ink-faint mb-3"></i>
                             <p>Aucun adhérent inscrit pour le moment.</p>
-                            <a href="{{ route('adherents.create') }}" class="mt-2 inline-block text-brand hover:underline">Inscrire le premier adhérent</a>
+                            <a href="{{ route('adherents.create') }}"
+                                class="mt-2 inline-block text-brand hover:underline">Inscrire le premier adhérent</a>
                         </td>
                     </tr>
                 @endforelse
